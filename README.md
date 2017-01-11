@@ -1,6 +1,6 @@
-#TEST-UI-PROJECT
+> koa-grace v1.x版本请移步： https://github.com/xiongwilee/koa-grace/tree/master
 
-
+# koa-grace v2
 
 [Gracejs](https://github.com/xiongwilee/koa-grace/tree/v2.x)(又称:koa-grace v2)  是全新的基于[koa v2.x](https://github.com/koajs/koa/tree/v2.x)的MVC+RESTful架构的前后端分离框架。
 
@@ -771,4 +771,3 @@ webpack将vues下的vue文件编译之后产出到`gracejs/app/demo/static`下�
 自此，洋洋洒洒1w多字，Gracejs终于介绍完毕；有兴趣的同学去github赏个star呗：https://github.com/xiongwilee/koa-grace 。
 
 最后，欢迎大家提issue、fork；有任何疑问也可以邮件联系：xiongwilee[at]foxmail.com。
-"# ry-ui" 
