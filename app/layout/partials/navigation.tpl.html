@@ -12,10 +12,88 @@
 
         <ul data-smart-menu>
 
-            <li data-ui-sref-active="active">
-                <a data-ui-sref="app.home" title="Outlook">
-                    <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{getWord('Home')}}</span></a>
+
+
+            <li data-menu-collapse class="top-menu-invisible">
+                <a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">教职工</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            个人资料</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            租房申请</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.prebuiltSkins">
+                            我的租产</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.prebuiltSkins">
+                            资费缴纳</a>
+                    </li>
+                </ul>
             </li>
+
+            <li data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">房屋资产管理员</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            房产管理</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            审批管理</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            报表管理</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.prebuiltSkins">
+                            数据备份</a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span
+                        class="menu-item-parent">财务管理员</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            财务统计</a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span
+                        class="menu-item-parent">系统管理员</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            权限管理</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            角色管理</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            用户管理</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.smartAdmin.appLayouts">
+                            服务器监控</a>
+                    </li>
+                </ul>
+            </li>
+
 
         </ul>
 
