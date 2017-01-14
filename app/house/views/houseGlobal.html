@@ -1,0 +1,223 @@
+<div id="content">
+<div class="row">
+    <big-breadcrumbs items="['公房资产管理', '房屋总览']" icon="home" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+</div>
+
+    <!-- content -->
+<!-- widget grid -->
+<section id="widget-grid" data-widget-grid>
+<!-- row -->
+<div class="row">
+
+<!-- NEW WIDGET START -->
+<article class="col-sm-12 col-md-12 col-lg-4">
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div id="resource-tree-widget" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false"  data-jarvis-widget>
+        <!-- widget options:
+        usage: <div data-jarvis-widget id="wid-id-0" data-widget-editbutton="false">
+        data-widget-colorbutton="false"
+        data-widget-editbutton="false"
+        data-widget-togglebutton="false"
+        data-widget-deletebutton="false"
+        data-widget-fullscreenbutton="false"
+        data-widget-custombutton="false"
+        data-widget-collapsed="true"
+        data-widget-sortable="false"
+        -->
+        <header>
+            <span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>
+            <h2>房屋资源视图</h2>
+            <div class="widget-toolbar smart-form">
+            <label class="input"> <i class="icon-append fa fa-question-circle"></i>
+                <input type="text" placeholder="输入查询关键字...">
+                <b class="tooltip tooltip-top-right">
+                    <i class="fa fa-warning txt-color-teal"></i>
+                    帮助</b>
+            </label>
+        </div>
+        </header>
+        <!-- widget div-->
+        <div>            <!-- widget content -->
+            <div class="widget-body">
+            <!--
+                <div class="tree smart-form">
+                   <ul data-smart-treeview data-items="demoTree2" role="tree"></ul>
+                </div>
+            -->
+                <div class="custom-scroll table-responsive" style="height:290px; overflow-y: scroll;">
+                    <div class="tree smart-form">
+                       <ul data-smart-treeview data-items="demoTree2" role="tree"></ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end widget content -->
+        </div>
+        <!-- end widget div -->
+    </div>
+    <!-- end widget -->
+</article>
+<!-- WIDGET END -->
+
+<!-- NEW WIDGET START -->
+<article class="col-sm-12 col-md-12 col-lg-4">
+    <!-- @link: jarvisWidget -->
+    <div data-jarvis-widget id="data-attribute-driven-widget" data-widget-editbutton="false"
+         data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-color="white"
+         style="margin-bottom: 0;">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+            <h2>地图</h2>
+        </header>
+        <!-- widget div-->
+        <div>
+            <!-- widget content -->
+            <div class="widget-body no-padding"
+                 data-smart-fit-app-view="#map-canvas" data-leading-y="160">
+
+                <div data-smart-fill-content="" id="map-canvas">
+                    <ui-gmap-google-map control='map.control' center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+                </div>
+            </div>
+            <!-- end widget content data-gmap-src="xml/gmap/pins.xml" -->
+        </div>
+        <!-- end widget div -->
+    </div>
+    <!-- end widget -->
+</article>
+<!-- WIDGET END -->
+
+</div>
+<!-- end row -->
+<!-- row -->
+<div class="row">
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="well">
+            <h1>Basic Usage</h1>
+            <div class="alert alert-info">
+                Note: You must delete the data-attribute* associated in order to act as true. For example <code> data-widget-togglebutton=&quot;true&quot;</code> will still act as <code>false</code>, you must remove the <strong>data-attribute</strong> for the statement to be true.
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th style="width:25%">HTML5 data attributes / CSS / HTML</th>
+                    <th style="width:15%">Place after</th>
+                    <th style="width:15%">Example value(s)</th>
+                    <th style="width:45%">Desctription</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>data-widget-sortable</td>
+                    <td><code>header</code></td>
+                    <td>false</td>
+                    <td>Prevent a widget from being sortable <i>(can only be used with the value 'false')</i>.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-icon</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>fa fa-trash</td>
+                    <td>Use a icon in the widgets header <i>(see icons section for all list of icons)</i>.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-togglebutton</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>false</td>
+                    <td>Prevent a widget from having a toggle button <i>(can only be used with the value 'false')</i>.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-deletebutton</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>false</td>
+                    <td>Prevent a widget from having a delete button <i>(can only be used with the value 'false')</i>.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-editbutton</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>false</td>
+                    <td>Prevent a widget from having a edit button <i>(can only be used with the value 'false')</i>.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-fullscreenbutton</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>false</td>
+                    <td>Prevent a widget from having a fullscreen button <i>(can only be used with the value 'false')</i>.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-load</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>widget-ajax.php</td>
+                    <td>The file that is loaded with ajax.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-refresh</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>10</td>
+                    <td>Seconds to refresh a ajax file <i>(see 'data-widget-load')</i>.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-refreshbutton</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>false</td>
+                    <td>Prevent a ajax widget from showing a refresh button <i>(can only be used with the value 'false')</i>.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-hidden</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>true</td>
+                    <td>Hide a widget at load <i>(can only be used with the value 'true')</i>.</td>
+                </tr>
+                <tr>
+                    <td> data-widget-colorbutton</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>false</td>
+                    <td>This is active by default, set it to false to hide.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-collapsed</td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>false</td>
+                    <td>Collapse a widget upon load <i>(can only be used with the value 'true')</i>. This will allways be collapsed every page load.</td>
+                </tr>
+                <tr>
+                    <td>data-widget-grid</td>
+                    <td><code>article</code></td>
+                    <td>false</td>
+                    <td>You can exclude grids from being a sortable/droppable area, this means that all widgets in this area will work, but cant be sortable/droppable and that all other
+                        widgets cant be dropped in this area. Add this attribute <i>(can only be used with the value 'false')</i> to a grid element.</td>
+                </tr>
+                <tr>
+                    <td><code>.no-padding</code></td>
+                    <td><code>.widget-body</code></td>
+                    <td>n/a</td>
+                    <td>Removes all padding inside widget body</td>
+                </tr>
+                <tr>
+                    <td><code>.well</code></td>
+                    <td><code>.jarviswidget</code></td>
+                    <td>n/a</td>
+                    <td>Converts a widget to a well</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="4">These HTML5 attributes are used as individual widget options. Main options can be changed in the widgets plugin it self.
+                        Notice: data attributes can only have 1 boolan value(see above)!
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+</section>
+<!-- end widget grid -->
+
+
+    
+
+</div>
+	

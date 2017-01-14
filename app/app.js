@@ -37,7 +37,8 @@ angular.module('app', [
     //'app.smartAdmin',
     //'app.eCommerce'
     'app.home',
-    'app.rentalApplication'
+    'app.rentalApplication',
+    'app.house'
 ])
 .config(function ($provide, $httpProvider, RestangularProvider) {
 
