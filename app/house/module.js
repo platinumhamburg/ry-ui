@@ -1,7 +1,7 @@
 "use strict";
 
 
-angular.module('app.house', ['ui.router','uiGmapgoogle-maps'])
+angular.module('app.house', ['ui.router','ngResource'])
 .config(function ($stateProvider) {
 
     $stateProvider

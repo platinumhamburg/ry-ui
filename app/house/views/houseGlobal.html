@@ -1,4 +1,4 @@
-<div id="content">
+<div id="content" ng-controller="HouseGlobalController">
 <div class="row">
     <big-breadcrumbs items="['公房资产管理', '房屋总览']" icon="home" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
 </div>
@@ -29,7 +29,7 @@
             <h2>房屋资源视图</h2>
             <div class="widget-toolbar smart-form">
             <label class="input"> <i class="icon-append fa fa-question-circle"></i>
-                <input type="text" placeholder="输入查询关键字...">
+                <input type="text" style="width: 160px" placeholder="输入查询关键字...">
                 <b class="tooltip tooltip-top-right">
                     <i class="fa fa-warning txt-color-teal"></i>
                     帮助</b>
@@ -58,39 +58,59 @@
 </article>
 <!-- WIDGET END -->
 
-<!-- NEW WIDGET START -->
 <article class="col-sm-12 col-md-12 col-lg-4">
-    <!-- @link: jarvisWidget -->
-    <div data-jarvis-widget id="data-attribute-driven-widget" data-widget-editbutton="false"
-         data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-color="white"
-         style="margin-bottom: 0;">
+
+    <div id="birda-eye-widget" data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false">
+
         <header>
             <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+
             <h2>地图</h2>
+
+            <div class="widget-toolbar hidden-mobile">
+                <span class="onoffswitch-title"><i class="fa fa-location-arrow"></i> Realtime</span>
+                <span class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                    checked="checked" id="myonoffswitch">
+                    <label class="onoffswitch-label" for="myonoffswitch"> <span
+                        class="onoffswitch-inner" data-swchon-text="YES"
+                        data-swchoff-text="NO"></span> <span
+                        class="onoffswitch-switch"></span> </label> </span>
+            </div>
         </header>
+
         <!-- widget div-->
         <div>
-            <!-- widget content -->
-            <div class="widget-body no-padding"
-                 data-smart-fit-app-view="#map-canvas" data-leading-y="160">
 
-                <div data-smart-fill-content="" id="map-canvas">
-                    <ui-gmap-google-map control='map.control' center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+            <div class="widget-body no-padding">
+                <!-- content goes here -->
+
+                <div id="vector-map" class="vector-map"
+                style="height:290px"
+                data-vector-map
+                data-map-data="countriesVisitsData"></div>
+
+                <div id="heat-fill">
+                    <span class="fill-a">0</span>
+
+                    <span class="fill-b">5,000</span>
                 </div>
+                <!-- end content -->
+
             </div>
-            <!-- end widget content data-gmap-src="xml/gmap/pins.xml" -->
+
         </div>
         <!-- end widget div -->
     </div>
     <!-- end widget -->
 </article>
-<!-- WIDGET END -->
 
 </div>
 <!-- end row -->
 <!-- row -->
 <div class="row">
 </div>
+
 
 <div class="row">
     <div class="col-sm-12">
