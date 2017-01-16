@@ -1,7 +1,7 @@
 "use strict";
 
 
-angular.module('app.house', ['ui.router','ngResource'])
+angular.module('app.house', ['ui.router','ngResource','datatables', 'datatables.bootstrap'])
 .config(function ($stateProvider) {
 
     $stateProvider
