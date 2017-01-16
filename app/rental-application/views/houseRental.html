@@ -1,0 +1,271 @@
+<div id="content">
+    <div class="row">
+        <div id="content" data-sparkline-container data-easy-pie-chart-container>
+            <div class="row">
+                <big-breadcrumbs items="['教职员工', '租房申请']" icon="file-o"
+                class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+                <div smart-include="app/layout/partials/sub-header.tpl.html"></div>
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="well well-sm">
+                        <!-- Timeline Content -->
+                        <div class="smart-timeline">
+                            <ul class="smart-timeline-list">
+                                <li>
+                                    <div class="smart-timeline-icon">
+                                        <img src="styles/img/avatars/sunny.png" width="32" height="32" alt="user">
+                                    </div>
+                                    <div class="smart-timeline-time">
+                                        <small>资格审核</small>
+                                    </div>
+                                    <div class="smart-timeline-content">
+                                        <p>
+                                            <a href-void><strong>您尚未通过租房资格审核</strong></a>
+                                        </p>
+                                        <p>
+                                            <a ng-click="smartModEg1()" class="btn btn-success">提交资格审批</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="smart-timeline-icon">
+                                        <i class="fa fa-file-text"></i>
+                                    </div>
+                                    <div class="smart-timeline-time">
+                                        <small>房源选择</small>
+                                    </div>
+                                    <div class="smart-timeline-content">
+                                        <p><a href-void><strong>您已通过租房资格审核，可以选择房源</strong></a></p>
+                                        <p><a data-toggle="modal" data-target="#myModal1" class="btn btn-success">点击查看房源</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="smart-timeline-icon bg-color-greenDark">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </div>
+                                    <div class="smart-timeline-time">
+                                        <small>租房审批</small>
+                                    </div>
+                                    <div class="smart-timeline-content">
+                                        <p>
+                                        <a href-void><strong>您已挑选房源，等待管理员审批</strong></a>
+                                        </p>
+                                        <p>
+                                            <button type="button" ng-click="notifyAdmin()" class="btn btn-success">
+                                                <i class="fa fa-thumbs-up"></i> 提醒管理员审批
+                                            </button></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="smart-timeline-icon">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <div class="smart-timeline-time">
+                                            <small>合同签署</small>
+                                        </div>
+                                        <div class="smart-timeline-content">
+                                            <p>
+                                                <a href-void><strong>您已通过租房审批</strong></a>
+                                            </p>
+                                            <p>
+                                                您已通过租房审批，请及时进行合同签订确保能够及时入住。
+                                            </p>
+                                            <p><a data-toggle="modal" data-target="#myModal2" class="btn btn-success">签订合同</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="smart-timeline-icon">
+                                            <i class="fa fa-pencil"></i>
+                                        </div>
+                                        <div class="smart-timeline-time">
+                                            <small>租户入住</small>
+                                        </div>
+                                        <div class="smart-timeline-content">
+                                            <p>
+                                                <a href-void><strong>您已签订合同</strong></a>
+                                            </p>
+                                            <div class="alert alert-success fade in">
+            <button class="close" data-dismiss="alert">
+                ×
+            </button>
+            <i class="fa-fw fa fa-check"></i>
+            <strong>Success</strong> 您已成功签订租房合同，请点击下方按钮阅读入住须知并及时入住。
+        </div>
+                                            <a href-void class="btn btn-xs btn-default">Read more</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END Timeline Content -->
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Article Post</h4>
+            </div>
+            <div class="modal-body">
+            <div class="widget-body no-padding">
+                    <div data-smart-include="app/tables/views/datatables.html"></div>
+                    </div>
+<!--                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Title" required />
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Content" rows="5" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="category"> Category</label>
+                            <select class="form-control" id="category">
+                                <option>Articles</option>
+                                <option>Tutorials</option>
+                                <option>Freebies</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tags"> Tags</label>
+                            <input type="text" class="form-control" id="tags" placeholder="Tags" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well well-sm well-primary">
+                            <form class="form form-inline " role="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="" placeholder="Date" required />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Draft</option>
+                                        <option>Published</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-eye-open"></span> Preview
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Post Article
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Article Post</h4>
+            </div>
+            <div class="modal-body">
+<!--             <div class="widget-body no-padding">
+                    <div data-smart-include="app/tables/views/datatables.html"></div>
+                    </div> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Title" required />
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Content" rows="5" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="category"> Category</label>
+                            <select class="form-control" id="category">
+                                <option>Articles</option>
+                                <option>Tutorials</option>
+                                <option>Freebies</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tags"> Tags</label>
+                            <input type="text" class="form-control" id="tags" placeholder="Tags" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well well-sm well-primary">
+                            <form class="form form-inline " role="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="" placeholder="Date" required />
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Draft</option>
+                                        <option>Published</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-eye-open"></span> Preview
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Post Article
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+        <!-- content -->
+
+    </div>
