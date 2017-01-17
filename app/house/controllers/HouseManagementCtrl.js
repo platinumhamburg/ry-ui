@@ -1,11 +1,10 @@
 'use strict';
 
-angular.module('app.eCommerce').controller('OrdersDemoCtrl', function ($scope, orderList) {
-
-    $scope.orders = orderList.data;
+angular.module('app.house').controller('HouseManagementController', function ($scope, houseList) {
+    $scope.houses = houseList.data;
 
     $scope.tableOptions =  {
-        "data": orderList.data.data,
+        "data": $scope.houses.data,
 //            "bDestroy": true,
         "iDisplayLength": 15,
         columns: [
@@ -19,4 +18,5 @@ angular.module('app.eCommerce').controller('OrdersDemoCtrl', function ($scope, o
         ],
         "order": [[1, 'asc']]
     }
+
 });

@@ -8,177 +8,170 @@
 <section id="widget-grid" data-widget-grid>
 <!-- row -->
 <div class="row">
-
-<!-- NEW WIDGET START -->
-<article class="col-sm-12 col-md-12 col-lg-4">
-    <!-- Widget ID (each widget will need unique ID)-->
-    <div id="resource-tree-widget" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false"  data-jarvis-widget>
-        <!-- widget options:
-        usage: <div data-jarvis-widget id="wid-id-0" data-widget-editbutton="false">
-        data-widget-colorbutton="false"
-        data-widget-editbutton="false"
-        data-widget-togglebutton="false"
-        data-widget-deletebutton="false"
-        data-widget-fullscreenbutton="false"
-        data-widget-custombutton="false"
-        data-widget-collapsed="true"
-        data-widget-sortable="false"
-        -->
-        <header>
-            <span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>
-            <h2>房屋资源视图</h2>
-            <div class="widget-toolbar smart-form">
-            <label class="input"> <i class="icon-append fa fa-question-circle"></i>
-                <input type="text" style="width: 160px" placeholder="输入查询关键字...">
-                <b class="tooltip tooltip-top-right">
-                    <i class="fa fa-warning txt-color-teal"></i>
-                    帮助</b>
-            </label>
-        </div>
-        </header>
-        <!-- widget div-->
-        <div>            <!-- widget content -->
-            <div class="widget-body">
-            <!--
-                <div class="tree smart-form">
-                   <ul data-smart-treeview data-items="demoTree2" role="tree"></ul>
-                </div>
+<!-- 资源树视图·START-->
+    <article class="col-sm-6 col-md-6 col-lg-3">
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div id="resource-tree-widget" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false"  data-jarvis-widget>
+            <!-- widget options:
+            usage: <div data-jarvis-widget id="wid-id-0" data-widget-editbutton="false">
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
             -->
-                <div class="custom-scroll table-responsive" style="height:290px; overflow-y: scroll;">
+            <header>
+                <span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>
+                <h2>房屋资源视图</h2>
+                <div class="widget-toolbar smart-form">
+                <label class="input"> <i class="icon-append fa fa-question-circle"></i>
+                    <input type="text" style="width: 100px" placeholder="关键字...">
+                    <b class="tooltip tooltip-top-right">
+                        <i class="fa fa-warning txt-color-teal"></i>
+                        帮助</b>
+                </label>
+            </div>
+            </header>
+            <!-- widget div-->
+            <div>            <!-- widget content -->
+                <div class="widget-body">
+                <!--
                     <div class="tree smart-form">
                        <ul data-smart-treeview data-items="demoTree2" role="tree"></ul>
                     </div>
-                </div>
-            </div>
-            <!-- end widget content -->
-        </div>
-        <!-- end widget div -->
-    </div>
-    <!-- end widget -->
-</article>
-<!-- WIDGET END -->
-
-<article class="col-sm-12 col-md-12 col-lg-4">
-
-    <div id="vector-map-widget" data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false">
-
-        <header>
-            <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
-
-            <h2>地图</h2>
-
-            <div class="widget-toolbar hidden-mobile">
-                <span class="onoffswitch-title"><i class="fa fa-location-arrow"></i> 动态</span>
-                <span class="onoffswitch">
-                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-                    checked="checked" id="myonoffswitch">
-                    <label class="onoffswitch-label" for="myonoffswitch"> <span
-                        class="onoffswitch-inner" data-swchon-text="开"
-                        data-swchoff-text="关"></span> <span
-                        class="onoffswitch-switch"></span> </label> </span>
-            </div>
-        </header>
-
-        <!-- widget div-->
-        <div>
-
-            <div class="widget-body no-padding">
-                <!-- content goes here -->
-
-                <div id="vector-map" class="vector-map"
-                style="height:290px"
-                data-vector-map
-                data-map-data="countriesVisitsData"></div>
-
-                <div id="heat-fill">
-                    <span class="fill-a">0</span>
-
-                    <span class="fill-b">5,000</span>
-                </div>
-                <!-- end content -->
-
-            </div>
-
-        </div>
-        <!-- end widget div -->
-    </div>
-    <!-- end widget -->
-</article>
-
-<article class="col-sm-12 col-md-12 col-lg-4">
-    <!-- Widget ID (each widget will need unique ID)-->
-    <div id="detail-widget" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false"  data-jarvis-widget>
-        <!-- widget options:
-        usage: <div data-jarvis-widget id="wid-id-0" data-widget-editbutton="false">
-        data-widget-colorbutton="false"
-        data-widget-editbutton="false"
-        data-widget-togglebutton="false"
-        data-widget-deletebutton="false"
-        data-widget-fullscreenbutton="false"
-        data-widget-custombutton="false"
-        data-widget-collapsed="true"
-        data-widget-sortable="false"
-        -->
-        <header>
-            <span class="widget-icon"> <i class="fa fa-book"></i> </span>
-            <h2>详情</h2>
-            <div class="widget-toolbar smart-form">
-            </div>
-        </header>
-        <!-- widget div-->
-        <div>            <!-- widget content -->
-            <div class="widget-body">
-            <!--
-                <div class="tree smart-form">
-                   <ul data-smart-treeview data-items="demoTree2" role="tree"></ul>
-                </div>
-            -->
-                <div class="custom-scroll table-responsive" style="height:290px; overflow-y: scroll;">
-                    
-                </div>
-            </div>
-            <!-- end widget content -->
-        </div>
-        <!-- end widget div -->
-    </div>
-    <!-- end widget -->
-</article>
-
-</div>
-<!-- end row -->
-
-</section>
-<!-- end widget grid -->
-<section widget-grid id="widget-grid">
-    <div class="row">
-        <article class="col-sm-12">
-            <div jarvis-widget id="standard-datatable-widget" data-widget-editbutton="false">
-                <header>
-                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                    <h2>列表</h2>
-                </header>
-                <div>
-                    <div class="widget-body no-padding">
-                    <table datatable dt-options="standardOptions" dt-columns="standardColumns" class="table table-striped table-bordered table-hover" width="100%">
-                    <thead>
-                    <tr>
-                        <th data-hide="phone">ID</th>
-                        <th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Name</th>
-                        <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Phone</th>
-                        <th>Company</th>
-                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> Zip</th>
-                        <th data-hide="phone,tablet">City</th>
-                        <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Date</th>
-                    </tr>
-                    </thead>
-                    </table>
+                -->
+                    <div class="custom-scroll table-responsive" style="height: 1024px; overflow-y: scroll;">
+                        <div class="tree smart-form">
+                           <ul data-smart-treeview data-items="demoTree2" role="tree"></ul>
+                        </div>
                     </div>
                 </div>
+                <!-- end widget content -->
             </div>
-        </article>
+            <!-- end widget div -->
+        </div>
+        <!-- end widget -->
+    </article>
+<!-- 资源树视图·END -->
+
+    <div class=" col-sm-6 col-md-6 col-lg-9">
+        <div class="row">
+        <!-- 地图视图·START -->
+            <article class="col-sm-12 col-md-12 col-lg-7">
+                <div id="vector-map-widget" data-jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+                        <h2>地图</h2>
+                        <div class="widget-toolbar hidden-mobile">
+                            <span class="onoffswitch-title"><i class="fa fa-location-arrow"></i> 动态</span>
+                            <span class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                                checked="checked" id="myonoffswitch">
+                                <label class="onoffswitch-label" for="myonoffswitch"> <span
+                                    class="onoffswitch-inner" data-swchon-text="开"
+                                    data-swchoff-text="关"></span> <span
+                                    class="onoffswitch-switch"></span> </label> </span>
+                        </div>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <div class="widget-body no-padding">
+                            <!-- content goes here -->
+                            <div id="vector-map" class="vector-map"
+                            style="height:290px"
+                            data-vector-map
+                            data-map-data="countriesVisitsData"></div>
+                            <div id="heat-fill">
+                                <span class="fill-a">0</span>
+                                <span class="fill-b">5,000</span>
+                            </div>
+                            <!-- end content -->
+                        </div>
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
+        <!-- 地图视图·END -->
+
+        <!-- 摘要视图·START -->
+            <article class="col-sm-12 col-md-12 col-lg-5">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div id="detail-widget" data-widget-sortable="false" data-widget-colorbutton="false" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false"  data-jarvis-widget>
+                    <!-- widget options:
+                    usage: <div data-jarvis-widget id="wid-id-0" data-widget-editbutton="false">
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+                    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-book"></i> </span>
+                        <h2>摘要</h2>
+                        <div class="widget-toolbar smart-form">
+                        </div>
+                    </header>
+                    <!-- widget div-->
+                    <div>            <!-- widget content -->
+                        <div class="widget-body">
+                        <!--
+                            <div class="tree smart-form">
+                               <ul data-smart-treeview data-items="demoTree2" role="tree"></ul>
+                            </div>
+                        -->
+                            <div class="custom-scroll table-responsive" style="height:290px; overflow-y: scroll;">
+                                
+                            </div>
+                        </div>
+                        <!-- end widget content -->
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+            </article>
+        <!-- 摘要视图·END -->
+        </div>
+        <div class="row">
+        <!-- 列表视图·START -->
+            <article class="col-sm-12 col-md-12 col-lg-12">
+                <div jarvis-widget id="standard-datatable-widget" data-widget-color="white" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>列表</h2>
+                    </header>
+                    <div>
+                        <div class="widget-body no-padding">
+                        <table datatable dt-options="standardOptions" dt-columns="standardColumns" class="table table-striped table-bordered table-hover" width="100%">
+                        <thead>
+                        <tr>
+                            <th data-hide="phone">ID</th>
+                            <th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Name</th>
+                            <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> Phone</th>
+                            <th>Company</th>
+                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> Zip</th>
+                            <th data-hide="phone,tablet">City</th>
+                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Date</th>
+                        </tr>
+                        </thead>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        <!-- 列表视图·END -->
+        </div>
     </div>
-
+</div>
+<!-- end row -->
 </section>
-
+<!-- end widget grid -->
+</div>
 </div>
 	

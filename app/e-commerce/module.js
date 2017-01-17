@@ -22,7 +22,7 @@ angular.module('app.eCommerce', ['ui.router'])
                     templateUrl: 'app/e-commerce/views/orders.html',
                     controller: 'OrdersDemoCtrl',
                     resolve: {
-                        orders: function($http, APP_CONFIG){
+                        orderList: function($http, APP_CONFIG){
                             return $http.get(APP_CONFIG.apiRootUrl + '/e-commerce/orders.json')
                         }
                     }

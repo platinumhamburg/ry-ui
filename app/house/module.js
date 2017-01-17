@@ -1,7 +1,4 @@
-"use strict";
-
-
-angular.module('app.house', ['ui.router','ngResource','datatables', 'datatables.bootstrap'])
+angular.module('app.house', ['ui.router'])
 .config(function ($stateProvider) {
 
     $stateProvider
@@ -23,4 +20,29 @@ angular.module('app.house', ['ui.router','ngResource','datatables', 'datatables.
                 }
             }
         })
+        .state('app.house.management', {
+            url: '/house/management',
+            data: {
+                title: '房屋总览'
+            },
+            views: {
+                "content@app": {
+                    templateUrl: 'app/house/views/houseManagement.html',
+                    controller: 'HouseManagementController',
+                    resolve: {
+                        houseList: function($http, APP_CONFIG){
+                            return $http.get(APP_CONFIG.apiRootUrl + '/e-commerce/orders.json')
+                        }
+                    }
+                }
+            },
+            resolve: {
+                scripts: function(lazyScript){
+                    return lazyScript.register([
+                        'build/vendor.datatables.js'
+                    ]);
+                }
+            }
+        })
+
 });

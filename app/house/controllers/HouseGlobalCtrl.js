@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.house').controller('HouseGlobalController', function ($scope, $http, $q, SmartMapStyle, DTOptionsBuilder, DTColumnBuilder) {
+angular.module('app.house').controller('HouseGlobalController', function ($scope, $http, $q, DTOptionsBuilder, DTColumnBuilder) {
     //资源树相关
     $scope.demoTree2 = [
         {"content": "<span><i class=\"fa fa-lg fa-folder-open\"></i> 武汉大学</span>", "expanded": false, "children": [
