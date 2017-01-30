@@ -1,0 +1,32 @@
+[
+	{
+      "campusId":"001",
+      "name":"一区",
+      "address":"湖北省武汉市珞珈山X号",
+      "lo":"314.2354",
+      "la":"46.1234",
+      "acquisitionWay":"划拨",
+      "totalArea":"12345",
+      "status":"<span class=\"center-block padding-5 label label-success\">有效</span>"
+    },
+    {
+      "campusId":"002",
+      "name":"二区",
+      "address":"湖北省武汉市珞珈山Y号",
+      "lo":"324.2354",
+      "la":"46.1234",
+      "acquisitionWay":"划拨",
+      "totalArea":"23345",
+      "status":"<span class=\"center-block padding-5 label label-success\">有效</span>"
+    },
+    {
+      "campusId":"003",
+      "name":"三区",
+      "address":"湖北省武汉市珞珈山Y号",
+      "lo":"114.2354",
+      "la":"36.1234",
+      "acquisitionWay":"划拨",
+      "totalArea":"62345",
+      "status":"<span class=\"center-block padding-5 label label-success\">有效</span>"
+    }
+]

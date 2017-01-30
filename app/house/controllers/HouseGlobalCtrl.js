@@ -54,9 +54,6 @@ angular.module('app.house').controller('HouseGlobalController', function ($scope
             {"content": "<span><i class=\"icon-leaf\"></i> Great great Grand Child</span>"},
             {"content": "<span><i class=\"icon-leaf\"></i> Great Grand Child</span>"},
             {"content": "<span><i class=\"icon-leaf\"></i> Great Grand Child</span>"}
-        ]},
-        {"content": "<span><i class=\"fa fa-lg fa-folder-open\"></i> 党政直属</span>", "children": [
-            {"content": "<span><i class=\"icon-leaf\"></i> Child</span>"}
         ]}
     ]
 
@@ -78,19 +75,17 @@ angular.module('app.house').controller('HouseGlobalController', function ($scope
 
     //表格相关
     $scope.standardOptions = DTOptionsBuilder
-        .fromSource('api/tables/datatables.standard.json')
+        .fromSource('/api/houses/campusList2.json')
          //Add Bootstrap compatibility
         .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
             "t" +
             "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
         .withBootstrap();
     $scope.standardColumns = [
-        DTColumnBuilder.newColumn('id').withClass('text-danger'),
+        DTColumnBuilder.newColumn('campusId').withClass('text-danger'),
         DTColumnBuilder.newColumn('name'),
-        DTColumnBuilder.newColumn('phone'),
-        DTColumnBuilder.newColumn('company'),
-        DTColumnBuilder.newColumn('zip'),
-        DTColumnBuilder.newColumn('city'),
-        DTColumnBuilder.newColumn('date')
+        DTColumnBuilder.newColumn('address'),
+        DTColumnBuilder.newColumn('acquisitionWay'),
+        DTColumnBuilder.newColumn('totalArea')
     ];
 });

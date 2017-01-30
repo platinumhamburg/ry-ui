@@ -8,12 +8,11 @@ angular.module('app.house').controller('HouseManagementController', function ($s
 //            "bDestroy": true,
         "iDisplayLength": 15,
         columns: [
-            {data: "orderId"},
-            {data: "customerId"},
-            {data: "purchase"},
-            {data: "delivery"},
-            {data: "basePrice"},
-            {data: "postalZip"},
+            {data: "campusId"},
+            {data: "name"},
+            {data: "address"},
+            {data: "acquisitionWay"},
+            {data: "totalArea"},
             {data: "status"}
         ],
         "order": [[1, 'asc']]

@@ -16,8 +16,8 @@ angular.module('app.house', ['ui.router'])
             views: {
                 "content@app": {
                     templateUrl: 'app/house/views/houseGlobal.html',
-                    controller: 'HouseGlobalController'
-                }
+                    controller: 'HouseGlobalController',
+                }   
             }
         })
         .state('app.house.management', {
@@ -31,7 +31,7 @@ angular.module('app.house', ['ui.router'])
                     controller: 'HouseManagementController',
                     resolve: {
                         houseList: function($http, APP_CONFIG){
-                            return $http.get(APP_CONFIG.apiRootUrl + '/e-commerce/orders.json')
+                            return $http.get(APP_CONFIG.apiRootUrl + '/houses/campusList.json')
                         }
                     }
                 }
