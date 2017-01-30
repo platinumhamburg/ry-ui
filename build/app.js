@@ -1084,6 +1084,66 @@ angular.module('app.home', ['ui.router'])
         })
 });
 
+angular.module('app.house', ['ui.router', 'datatables', 'datatables.buttons'])
+.config(function ($stateProvider) {
+
+    $stateProvider
+        .state('app.house', {
+        abstract: true,
+            data: {
+                title: 'UI Elements'
+            }
+        })
+        .state('app.house.global', {
+            url: '/house/global',
+            data: {
+                title: '房屋总览'
+            },
+            views: {
+                "content@app": {
+                    templateUrl: 'app/house/views/houseGlobal.html',
+                    controller: 'HouseGlobalController',
+                }   
+            }
+        })
+        .state('app.house.management', {
+            url: '/house/management',
+            data: {
+                title: '房屋总览'
+            },
+            views: {
+                "content@app": {
+                    templateUrl: 'app/house/views/houseManagement.html',
+                    controller: 'HouseManagementController',
+                    resolve: {
+                        houseList: function($http, APP_CONFIG){
+                            return $http.get(APP_CONFIG.apiRootUrl + '/houses/campusList.json')
+                        }
+                    }
+                }
+            },
+            resolve: {
+                scripts: function(lazyScript){
+                    return lazyScript.register([
+                        'build/vendor.datatables.js'
+                    ]);
+                }
+            }
+        })
+        .state('app.house.campusManagement', {
+            url: '/house/campusManagement',
+            data: {
+                title: '房屋总览'
+            },
+            views: {
+                "content@app": {
+                    templateUrl: 'app/house/views/campusManagement.html',
+                    controller: 'CampusManagementController'
+                }
+            }
+        })
+});
+
 'use strict';
 
 angular.module('app.inbox', [
@@ -1204,66 +1264,6 @@ angular.module('app.inbox', [
             }
         });
 });
-angular.module('app.house', ['ui.router', 'datatables', 'datatables.buttons'])
-.config(function ($stateProvider) {
-
-    $stateProvider
-        .state('app.house', {
-        abstract: true,
-            data: {
-                title: 'UI Elements'
-            }
-        })
-        .state('app.house.global', {
-            url: '/house/global',
-            data: {
-                title: '房屋总览'
-            },
-            views: {
-                "content@app": {
-                    templateUrl: 'app/house/views/houseGlobal.html',
-                    controller: 'HouseGlobalController',
-                }   
-            }
-        })
-        .state('app.house.management', {
-            url: '/house/management',
-            data: {
-                title: '房屋总览'
-            },
-            views: {
-                "content@app": {
-                    templateUrl: 'app/house/views/houseManagement.html',
-                    controller: 'HouseManagementController',
-                    resolve: {
-                        houseList: function($http, APP_CONFIG){
-                            return $http.get(APP_CONFIG.apiRootUrl + '/houses/campusList.json')
-                        }
-                    }
-                }
-            },
-            resolve: {
-                scripts: function(lazyScript){
-                    return lazyScript.register([
-                        'build/vendor.datatables.js'
-                    ]);
-                }
-            }
-        })
-        .state('app.house.campusManagement', {
-            url: '/house/campusManagement',
-            data: {
-                title: '房屋总览'
-            },
-            views: {
-                "content@app": {
-                    templateUrl: 'app/house/views/campusManagement.html',
-                    controller: 'CampusManagementController'
-                }
-            }
-        })
-});
-
 "use strict";
 
 
@@ -1286,6 +1286,37 @@ angular.module('app.layout', ['ui.router'])
 })
 
 
+    "use strict";
+
+
+    angular.module('app.maps', ['ui.router',
+        'uiGmapgoogle-maps'
+    ])
+    //.config(function(uiGmapGoogleMapApiProvider) {
+    //    uiGmapGoogleMapApiProvider.configure({
+    //        //    key: 'your api key',
+    //        v: '3.20', //defaults to latest 3.X anyhow
+    //        libraries: 'weather,geometry,visualization'
+    //    });
+    //})
+
+
+    angular.module('app.maps').config(function ($stateProvider) {
+
+        $stateProvider
+            .state('app.maps', {
+                url: '/maps',
+                data: {
+                    title: 'Maps'
+                },
+                views: {
+                    "content@app": {
+                        controller: 'MapsDemoCtrl',
+                        templateUrl: 'app/maps/views/maps-demo.html'
+                    }
+                }
+            })
+    });
 "use strict";
 
 angular.module('app.misc', ['ui.router']);
@@ -1414,37 +1445,6 @@ angular.module('app.misc').config(function ($stateProvider) {
             }
         })
 });
-    "use strict";
-
-
-    angular.module('app.maps', ['ui.router',
-        'uiGmapgoogle-maps'
-    ])
-    //.config(function(uiGmapGoogleMapApiProvider) {
-    //    uiGmapGoogleMapApiProvider.configure({
-    //        //    key: 'your api key',
-    //        v: '3.20', //defaults to latest 3.X anyhow
-    //        libraries: 'weather,geometry,visualization'
-    //    });
-    //})
-
-
-    angular.module('app.maps').config(function ($stateProvider) {
-
-        $stateProvider
-            .state('app.maps', {
-                url: '/maps',
-                data: {
-                    title: 'Maps'
-                },
-                views: {
-                    "content@app": {
-                        controller: 'MapsDemoCtrl',
-                        templateUrl: 'app/maps/views/maps-demo.html'
-                    }
-                }
-            })
-    });
 "use strict";
 
 
@@ -3617,16 +3617,38 @@ angular.module('app.house').controller('CampusManagementController', function ($
             "t" +
             "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
         .withButtons([
-            'columnsToggle',
-            'colvis',
-            'copy',
-            'print',
-            'excel',
             {
-                text: 'Some button',
+                extend: 'print',
+                text: '打印',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            },
+            {
+                extend: 'copy',
+                text: '复制',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            },
+            {
+                extend: 'excel',
+                text: '导出Excel',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            },
+            {
+                text: '其它',
                 key: '1',
                 action: function (e, dt, node, config) {
-                    alert('Button activated');
+                    alert('你点击了该按钮！');
                 }
             }
         ])

@@ -9,16 +9,38 @@ angular.module('app.house').controller('CampusManagementController', function ($
             "t" +
             "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
         .withButtons([
-            'columnsToggle',
-            'colvis',
-            'copy',
-            'print',
-            'excel',
             {
-                text: 'Some button',
+                extend: 'print',
+                text: '打印',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            },
+            {
+                extend: 'copy',
+                text: '复制',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            },
+            {
+                extend: 'excel',
+                text: '导出Excel',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            },
+            {
+                text: '其它',
                 key: '1',
                 action: function (e, dt, node, config) {
-                    alert('Button activated');
+                    alert('你点击了该按钮！');
                 }
             }
         ])
