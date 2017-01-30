@@ -1,4 +1,4 @@
-angular.module('app.house', ['ui.router'])
+angular.module('app.house', ['ui.router', 'datatables', 'datatables.buttons'])
 .config(function ($stateProvider) {
 
     $stateProvider
@@ -44,5 +44,16 @@ angular.module('app.house', ['ui.router'])
                 }
             }
         })
-
+        .state('app.house.campusManagement', {
+            url: '/house/campusManagement',
+            data: {
+                title: '房屋总览'
+            },
+            views: {
+                "content@app": {
+                    templateUrl: 'app/house/views/campusManagement.html',
+                    controller: 'CampusManagementController'
+                }
+            }
+        })
 });
