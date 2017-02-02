@@ -5,13 +5,14 @@ angular.module('app.house').controller('CampusManagementController', function ($
     $scope.standardOptions = DTOptionsBuilder
         .fromSource('/api/houses/campusList2.json')
          //Add Bootstrap compatibility
-        .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+        .withDOM("<'dt-toolbar'r>" +
             "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
+            "<'dt-toolbar-footer'<'col-sm-3 col-xs-12 hidden-xs'f><'col-sm-3 col-xs-12 hidden-xs'l><'col-sm-3 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-3'p>>")
         .withButtons([
             {
                 extend: 'print',
-                text: '打印',
+                text: '<i class="fa fa-print"></i> 打印',
+                className: 'btn btn-default',
                 exportOptions: {
                     modifier: {
                         page: 'current'
@@ -20,7 +21,8 @@ angular.module('app.house').controller('CampusManagementController', function ($
             },
             {
                 extend: 'copy',
-                text: '复制',
+                text: '<i class="fa fa-clipboard"></i> 复制',
+                className: 'btn btn-default',
                 exportOptions: {
                     modifier: {
                         page: 'current'
@@ -29,7 +31,8 @@ angular.module('app.house').controller('CampusManagementController', function ($
             },
             {
                 extend: 'excel',
-                text: '导出Excel',
+                text: '<i class="fa fa-table"></i> 导出Excel',
+                className: 'btn btn-default',
                 exportOptions: {
                     modifier: {
                         page: 'current'
@@ -37,15 +40,15 @@ angular.module('app.house').controller('CampusManagementController', function ($
                 }
             },
             {
-                text: '其它',
+                text: '<i class="fa fa-cube"></i> 其它',
+                className: 'btn btn-default pull-right',
                 key: '1',
                 action: function (e, dt, node, config) {
                     alert('你点击了该按钮！');
                 }
             }
         ])
-        .withBootstrap()
-        ;
+        .withBootstrap();
     $scope.standardColumns = [
         DTColumnBuilder.newColumn('campusId').withClass('text-danger'),
         DTColumnBuilder.newColumn('name'),
