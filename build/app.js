@@ -527,65 +527,6 @@ angular.module('app.appViews', ['ui.router'])
         })
 });
 
-
-
-"use strict";
-
-
-angular
-.module('app.calendar', ['ngResource','ui.router'])
-.config(function ($stateProvider) {
-
-    $stateProvider
-        .state('app.calendar', {
-            url: '/calendar',
-            views: {
-                content: {
-                    templateUrl: 'app/calendar/views/calendar.tpl.html'
-                }
-            },
-            data:{
-                title: 'Calendar'
-            }
-        });
-});
-
-
-
-'use strict';
-
-angular.module('app.dashboard', [
-    'ui.router',
-    'ngResource'
-])
-
-.config(function ($stateProvider) {
-    $stateProvider
-        .state('app.dashboard', {
-            url: '/dashboard',
-            views: {
-                "content@app": {
-                    controller: 'DashboardCtrl',
-                    templateUrl: 'app/dashboard/dashboard.html'
-                }
-            },
-            data:{
-                title: 'Dashboard'
-            }
-        })
-        .state('app.dashboard-social', {
-            url: '/dashboard-social',
-            views: {
-                "content@app": {
-                    templateUrl: 'app/dashboard/social-wall.html'
-                }
-            },
-            data:{
-                title: 'Dashboard Social'
-            }
-        });
-});
-
 "use strict";
 
 angular.module('app.auth', [
@@ -684,6 +625,65 @@ angular.module('app.auth', [
 }).constant('authKeys', {
     googleClientId: '',
     facebookAppId: ''
+});
+
+
+
+"use strict";
+
+
+angular
+.module('app.calendar', ['ngResource','ui.router'])
+.config(function ($stateProvider) {
+
+    $stateProvider
+        .state('app.calendar', {
+            url: '/calendar',
+            views: {
+                content: {
+                    templateUrl: 'app/calendar/views/calendar.tpl.html'
+                }
+            },
+            data:{
+                title: 'Calendar'
+            }
+        });
+});
+
+
+
+'use strict';
+
+angular.module('app.dashboard', [
+    'ui.router',
+    'ngResource'
+])
+
+.config(function ($stateProvider) {
+    $stateProvider
+        .state('app.dashboard', {
+            url: '/dashboard',
+            views: {
+                "content@app": {
+                    controller: 'DashboardCtrl',
+                    templateUrl: 'app/dashboard/dashboard.html'
+                }
+            },
+            data:{
+                title: 'Dashboard'
+            }
+        })
+        .state('app.dashboard-social', {
+            url: '/dashboard-social',
+            views: {
+                "content@app": {
+                    templateUrl: 'app/dashboard/social-wall.html'
+                }
+            },
+            data:{
+                title: 'Dashboard Social'
+            }
+        });
 });
 
 "use strict";
@@ -3602,14 +3602,76 @@ angular.module('app.graphs').controller('FlotCtrl', function ($scope) {
 });
 'use strict';
 
+angular.module('app.home').controller('HomeController', function ($scope) {
+
+
+});
+'use strict';
+
 angular.module('app.house').controller('CampusManagementController', function ($scope, $http, $q, DTOptionsBuilder, DTColumnBuilder) {
+    $('campusList').DataTable({
+        buttons: {
+            dom: {
+                container: {
+                    tag: 'div',
+                    className:'btn-toolbar'
+                },
+                buttonContainer: {
+                    tag: 'div',
+                    className:'btn-group'
+                },
+                button: {
+                    tag: 'button'
+                }
+            }
+        }
+    } );
+
     //表格相关
     $scope.standardOptions = DTOptionsBuilder
         .fromSource('/api/houses/campusList2.json')
-         //Add Bootstrap compatibility
-        .withDOM("<'dt-toolbar'r>" +
+        .withLanguage({
+            "sEmptyTable":     "没有查询到数据",
+            "sInfo":           "显示从 _START_ 至 _END_ ，总计 _TOTAL_ 项数据",
+            "sInfoEmpty":      "显示从 0 至 0 总计 0 项数据",
+            "sInfoFiltered":   "(filtered from _MAX_ total entries)",
+            "sInfoPostFix":    "",
+            "sInfoThousands":  ",",
+            "sLengthMenu":     "显示 _MENU_ 项数据",
+            "sLoadingRecords": "载入中...",
+            "sProcessing":     "处理中...",
+            "sSearch":         "搜索：",
+            "sZeroRecords":    "没有查询到匹配的数据",
+            "oPaginate": {
+                "sFirst":    "First",
+                "sLast":     "Last",
+                "sNext":     "Next",
+                "sPrevious": "Previous"
+            },
+            "oAria": {
+                "sSortAscending":  ": activate to sort column ascending",
+                "sSortDescending": ": activate to sort column descending"
+            }
+        })
+        .withDOM(/*"<'dt-toolbar'r>" + */
             "t" +
             "<'dt-toolbar-footer'<'col-sm-3 col-xs-12 hidden-xs'f><'col-sm-3 col-xs-12 hidden-xs'l><'col-sm-3 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-3'p>>")
+        .withBootstrap()
+        .withBootstrapOptions({
+            TableTools: {
+                classes: {
+                    container: 'btn-group',
+                    buttons: {
+                        normal: 'btn btn-danger'
+                    }
+                }
+            },
+            ColVis: {
+                classes: {
+                    masterButton: 'btn btn-primary'
+                }
+            }
+        })
         .withButtons([
             {
                 extend: 'print',
@@ -3650,7 +3712,18 @@ angular.module('app.house').controller('CampusManagementController', function ($
                 }
             }
         ])
-        .withBootstrap();
+        // .withColVis()
+        // Add Table tools compatibility
+        // .withTableTools('vendor/datatables-tabletools/swf/copy_csv_xls_pdf.swf')
+        // .withTableToolsButtons([
+        //         'copy',
+        //         'print', {
+        //         'sExtends': 'collection',
+        //         'sButtonText': 'Save',
+        //         'aButtons': ['csv', 'xls', 'pdf']
+        //     }
+        // ])
+        ;
     $scope.standardColumns = [
         DTColumnBuilder.newColumn('campusId').withClass('text-danger'),
         DTColumnBuilder.newColumn('name'),
@@ -3835,12 +3908,6 @@ angular.module('app.house').directive('smartTreeview', function ($compile, $sce)
             };
         }
     };
-});
-'use strict';
-
-angular.module('app.home').controller('HomeController', function ($scope) {
-
-
 });
 "use strict";
 
@@ -6033,6 +6100,43 @@ angular.module('app.chat').directive('chatWidget', function (ChatApi) {
 });
 "use strict";
 
+angular.module('app').factory('Todo', function (Restangular, APP_CONFIG, $httpBackend) {
+
+    var normalize = function(todo) {
+        if(!todo._id){
+            todo._id = _.unique('todo')
+        }
+        todo.toggle = function(){
+            if (!todo.completedAt) {
+                todo.state = 'Completed';
+                todo.completedAt = JSON.stringify(new Date());
+            } else {
+                todo.state = 'Critical';
+                todo.completedAt = null;
+            }
+        };
+
+        todo.setState = function(state){
+            todo.state = state;
+            if (state == 'Completed') {
+                todo.completedAt = JSON.stringify(new Date());
+            } else {
+                todo.completedAt = null;
+            }
+        };
+
+        return todo;
+    };
+
+    var Todo = Restangular.all(APP_CONFIG.apiRootUrl + '/todos.json');
+
+    Restangular.extendModel(APP_CONFIG.apiRootUrl + '/todos.json', normalize);
+    Todo.normalize = normalize;
+
+    return Todo
+});
+"use strict";
+
  angular.module('app').directive('todoList', function ($timeout, Todo) {
 
     return {
@@ -6073,43 +6177,6 @@ angular.module('app.chat').directive('chatWidget', function (ChatApi) {
 
         }
     }
-});
-"use strict";
-
-angular.module('app').factory('Todo', function (Restangular, APP_CONFIG, $httpBackend) {
-
-    var normalize = function(todo) {
-        if(!todo._id){
-            todo._id = _.unique('todo')
-        }
-        todo.toggle = function(){
-            if (!todo.completedAt) {
-                todo.state = 'Completed';
-                todo.completedAt = JSON.stringify(new Date());
-            } else {
-                todo.state = 'Critical';
-                todo.completedAt = null;
-            }
-        };
-
-        todo.setState = function(state){
-            todo.state = state;
-            if (state == 'Completed') {
-                todo.completedAt = JSON.stringify(new Date());
-            } else {
-                todo.completedAt = null;
-            }
-        };
-
-        return todo;
-    };
-
-    var Todo = Restangular.all(APP_CONFIG.apiRootUrl + '/todos.json');
-
-    Restangular.extendModel(APP_CONFIG.apiRootUrl + '/todos.json', normalize);
-    Todo.normalize = normalize;
-
-    return Todo
 });
 'use strict';
 
@@ -8281,127 +8348,6 @@ angular.module('app.graphs').directive('vectorMap', function () {
 });
 'use strict';
 
-angular.module('app.tables').directive('jqGrid', function ($compile) {
-    var jqGridCounter = 0;
-
-    return {
-        replace: true,
-        restrict: 'E',
-        scope: {
-            gridData: '='
-        },
-        template: '<div>' +
-            '<table></table>' +
-            '<div class="jqgrid-pagination"></div>' +
-            '</div>',
-        controller: function($scope, $element){
-            $scope.editRow  = function(row){
-                $element.find('table').editRow(row);
-            };
-            $scope.saveRow  = function(row){
-                $element.find('table').saveRow(row);
-            };
-            $scope.restoreRow  = function(row){
-                $element.find('table').restoreRow(row);
-            };
-        },
-        link: function (scope, element) {
-            var gridNumber = jqGridCounter++;
-            var wrapperId = 'jqgrid-' + gridNumber;
-            element.attr('id', wrapperId);
-
-            var tableId = 'jqgrid-table-' + gridNumber;
-            var table = element.find('table');
-            table.attr('id', tableId);
-
-            var pagerId = 'jqgrid-pager-' + gridNumber;
-            element.find('.jqgrid-pagination').attr('id', pagerId);
-
-
-            table.jqGrid({
-                data : scope.gridData.data,
-                datatype : "local",
-                height : 'auto',
-                colNames : scope.gridData.colNames || [],
-                colModel : scope.gridData.colModel || [],
-                rowNum : 10,
-                rowList : [10, 20, 30],
-                pager : '#' + pagerId,
-                sortname : 'id',
-                toolbarfilter : true,
-                viewrecords : true,
-                sortorder : "asc",
-                gridComplete : function() {
-                    var ids = table.jqGrid('getDataIDs');
-                    for (var i = 0; i < ids.length; i++) {
-                        var cl = ids[i];
-                        var be = "<button class='btn btn-xs btn-default' uib-tooltip='Edit Row' tooltip-append-to-body='true' ng-click='editRow("+ cl +")'><i class='fa fa-pencil'></i></button>";
-
-                        var se = "<button class='btn btn-xs btn-default' uib-tooltip='Save Row' tooltip-append-to-body='true' ng-click='saveRow("+ cl +")'><i class='fa fa-save'></i></button>";
-
-                        var ca = "<button class='btn btn-xs btn-default' uib-tooltip='Cancel' tooltip-append-to-body='true' ng-click='restoreRow("+ cl +")'><i class='fa fa-times'></i></button>";
-
-                        table.jqGrid('setRowData', ids[i], {
-                            act : be + se + ca
-                        });
-                    }
-                },
-                editurl : "dummy.html",
-                caption : "SmartAdmin jQgrid Skin",
-                multiselect : true,
-                autowidth : true
-
-            });
-            table.jqGrid('navGrid', '#' + pagerId, {
-                edit : false,
-                add : false,
-                del : true
-            });
-            table.jqGrid('inlineNav', '#' + pagerId);
-
-
-            element.find(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
-            element.find(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
-            element.find(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
-            element.find(".ui-jqgrid-pager").removeClass("ui-state-default");
-            element.find(".ui-jqgrid").removeClass("ui-widget-content");
-
-            // add classes
-            element.find(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
-            element.find(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
-
-            element.find(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
-            element.find(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
-            element.find(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
-            element.find(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
-            element.find(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
-            element.find(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
-            element.find(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
-            element.find(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
-
-            element.find(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
-            element.find(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
-
-            element.find(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
-            element.find(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
-
-            element.find(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
-            element.find(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
-
-            element.find(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
-            element.find(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
-
-            $(window).on('resize.jqGrid', function() {
-               table.jqGrid('setGridWidth', $("#content").width());
-            });
-
-
-            $compile(element.contents())(scope);
-        }
-    }
-});
-'use strict';
-
 angular.module('app.tables').directive('datatableBasic', function ($compile) {
     return {
         restrict: 'A',
@@ -8697,6 +8643,127 @@ angular.module('app.tables').directive('datatableTableTools', function () {
                     responsiveHelper.respond();
                 }
             });
+        }
+    }
+});
+'use strict';
+
+angular.module('app.tables').directive('jqGrid', function ($compile) {
+    var jqGridCounter = 0;
+
+    return {
+        replace: true,
+        restrict: 'E',
+        scope: {
+            gridData: '='
+        },
+        template: '<div>' +
+            '<table></table>' +
+            '<div class="jqgrid-pagination"></div>' +
+            '</div>',
+        controller: function($scope, $element){
+            $scope.editRow  = function(row){
+                $element.find('table').editRow(row);
+            };
+            $scope.saveRow  = function(row){
+                $element.find('table').saveRow(row);
+            };
+            $scope.restoreRow  = function(row){
+                $element.find('table').restoreRow(row);
+            };
+        },
+        link: function (scope, element) {
+            var gridNumber = jqGridCounter++;
+            var wrapperId = 'jqgrid-' + gridNumber;
+            element.attr('id', wrapperId);
+
+            var tableId = 'jqgrid-table-' + gridNumber;
+            var table = element.find('table');
+            table.attr('id', tableId);
+
+            var pagerId = 'jqgrid-pager-' + gridNumber;
+            element.find('.jqgrid-pagination').attr('id', pagerId);
+
+
+            table.jqGrid({
+                data : scope.gridData.data,
+                datatype : "local",
+                height : 'auto',
+                colNames : scope.gridData.colNames || [],
+                colModel : scope.gridData.colModel || [],
+                rowNum : 10,
+                rowList : [10, 20, 30],
+                pager : '#' + pagerId,
+                sortname : 'id',
+                toolbarfilter : true,
+                viewrecords : true,
+                sortorder : "asc",
+                gridComplete : function() {
+                    var ids = table.jqGrid('getDataIDs');
+                    for (var i = 0; i < ids.length; i++) {
+                        var cl = ids[i];
+                        var be = "<button class='btn btn-xs btn-default' uib-tooltip='Edit Row' tooltip-append-to-body='true' ng-click='editRow("+ cl +")'><i class='fa fa-pencil'></i></button>";
+
+                        var se = "<button class='btn btn-xs btn-default' uib-tooltip='Save Row' tooltip-append-to-body='true' ng-click='saveRow("+ cl +")'><i class='fa fa-save'></i></button>";
+
+                        var ca = "<button class='btn btn-xs btn-default' uib-tooltip='Cancel' tooltip-append-to-body='true' ng-click='restoreRow("+ cl +")'><i class='fa fa-times'></i></button>";
+
+                        table.jqGrid('setRowData', ids[i], {
+                            act : be + se + ca
+                        });
+                    }
+                },
+                editurl : "dummy.html",
+                caption : "SmartAdmin jQgrid Skin",
+                multiselect : true,
+                autowidth : true
+
+            });
+            table.jqGrid('navGrid', '#' + pagerId, {
+                edit : false,
+                add : false,
+                del : true
+            });
+            table.jqGrid('inlineNav', '#' + pagerId);
+
+
+            element.find(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
+            element.find(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
+            element.find(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
+            element.find(".ui-jqgrid-pager").removeClass("ui-state-default");
+            element.find(".ui-jqgrid").removeClass("ui-widget-content");
+
+            // add classes
+            element.find(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
+            element.find(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
+
+            element.find(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
+            element.find(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
+            element.find(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
+            element.find(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
+            element.find(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
+            element.find(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
+            element.find(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
+            element.find(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
+
+            element.find(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
+            element.find(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
+
+            element.find(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
+            element.find(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
+
+            element.find(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
+            element.find(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
+
+            element.find(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
+            element.find(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+
+            $(window).on('resize.jqGrid', function() {
+               table.jqGrid('setGridWidth', $("#content").width());
+            });
+
+
+            $compile(element.contents())(scope);
         }
     }
 });
@@ -11211,6 +11278,24 @@ angular.module('SmartAdmin.Forms').directive('smartJcrop', function ($q) {
 });
 'use strict';
 
+angular.module('SmartAdmin.Forms').directive('smartDropzone', function () {
+    return function (scope, element, attrs) {
+        var config, dropzone;
+
+        config = scope[attrs.smartDropzone];
+
+        // create a Dropzone for the element with the given options
+        dropzone = new Dropzone(element[0], config.options);
+
+        // bind the given event handlers
+        angular.forEach(config.eventHandlers, function (handler, event) {
+            dropzone.on(event, handler);
+        });
+    };
+});
+
+'use strict';
+
 angular.module('SmartAdmin.Forms').directive('smartClockpicker', function () {
     return {
         restrict: 'A',
@@ -11531,24 +11616,6 @@ angular.module('SmartAdmin.Forms').directive('smartXeditable', function($timeout
 
     }
 });
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartDropzone', function () {
-    return function (scope, element, attrs) {
-        var config, dropzone;
-
-        config = scope[attrs.smartDropzone];
-
-        // create a Dropzone for the element with the given options
-        dropzone = new Dropzone(element[0], config.options);
-
-        // bind the given event handlers
-        angular.forEach(config.eventHandlers, function (handler, event) {
-            dropzone.on(event, handler);
-        });
-    };
-});
-
 'use strict';
 
 angular.module('SmartAdmin.Forms').directive('smartValidateForm', function (formsCommon) {

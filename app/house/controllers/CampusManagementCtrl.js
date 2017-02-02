@@ -1,13 +1,69 @@
 'use strict';
 
 angular.module('app.house').controller('CampusManagementController', function ($scope, $http, $q, DTOptionsBuilder, DTColumnBuilder) {
+    $('campusList').DataTable({
+        buttons: {
+            dom: {
+                container: {
+                    tag: 'div',
+                    className:'btn-toolbar'
+                },
+                buttonContainer: {
+                    tag: 'div',
+                    className:'btn-group'
+                },
+                button: {
+                    tag: 'button'
+                }
+            }
+        }
+    } );
+
     //表格相关
     $scope.standardOptions = DTOptionsBuilder
         .fromSource('/api/houses/campusList2.json')
-         //Add Bootstrap compatibility
-        .withDOM("<'dt-toolbar'r>" +
+        .withLanguage({
+            "sEmptyTable":     "没有查询到数据",
+            "sInfo":           "显示从 _START_ 至 _END_ ，总计 _TOTAL_ 项数据",
+            "sInfoEmpty":      "显示从 0 至 0 总计 0 项数据",
+            "sInfoFiltered":   "(filtered from _MAX_ total entries)",
+            "sInfoPostFix":    "",
+            "sInfoThousands":  ",",
+            "sLengthMenu":     "显示 _MENU_ 项数据",
+            "sLoadingRecords": "载入中...",
+            "sProcessing":     "处理中...",
+            "sSearch":         "搜索：",
+            "sZeroRecords":    "没有查询到匹配的数据",
+            "oPaginate": {
+                "sFirst":    "First",
+                "sLast":     "Last",
+                "sNext":     "Next",
+                "sPrevious": "Previous"
+            },
+            "oAria": {
+                "sSortAscending":  ": activate to sort column ascending",
+                "sSortDescending": ": activate to sort column descending"
+            }
+        })
+        .withDOM(/*"<'dt-toolbar'r>" + */
             "t" +
             "<'dt-toolbar-footer'<'col-sm-3 col-xs-12 hidden-xs'f><'col-sm-3 col-xs-12 hidden-xs'l><'col-sm-3 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-3'p>>")
+        .withBootstrap()
+        .withBootstrapOptions({
+            TableTools: {
+                classes: {
+                    container: 'btn-group',
+                    buttons: {
+                        normal: 'btn btn-danger'
+                    }
+                }
+            },
+            ColVis: {
+                classes: {
+                    masterButton: 'btn btn-primary'
+                }
+            }
+        })
         .withButtons([
             {
                 extend: 'print',
@@ -48,7 +104,18 @@ angular.module('app.house').controller('CampusManagementController', function ($
                 }
             }
         ])
-        .withBootstrap();
+        // .withColVis()
+        // Add Table tools compatibility
+        // .withTableTools('vendor/datatables-tabletools/swf/copy_csv_xls_pdf.swf')
+        // .withTableToolsButtons([
+        //         'copy',
+        //         'print', {
+        //         'sExtends': 'collection',
+        //         'sButtonText': 'Save',
+        //         'aButtons': ['csv', 'xls', 'pdf']
+        //     }
+        // ])
+        ;
     $scope.standardColumns = [
         DTColumnBuilder.newColumn('campusId').withClass('text-danger'),
         DTColumnBuilder.newColumn('name'),
