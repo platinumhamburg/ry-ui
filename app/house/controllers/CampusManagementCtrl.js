@@ -1,23 +1,7 @@
 'use strict';
 
 angular.module('app.house').controller('CampusManagementController', function ($scope, $http, $q, DTOptionsBuilder, DTColumnBuilder) {
-    $('campusList').DataTable({
-        buttons: {
-            dom: {
-                container: {
-                    tag: 'div',
-                    className:'btn-toolbar'
-                },
-                buttonContainer: {
-                    tag: 'div',
-                    className:'btn-group'
-                },
-                button: {
-                    tag: 'button'
-                }
-            }
-        }
-    } );
+    
 
     //表格相关
     $scope.standardOptions = DTOptionsBuilder
@@ -26,7 +10,7 @@ angular.module('app.house').controller('CampusManagementController', function ($
             "sEmptyTable":     "没有查询到数据",
             "sInfo":           "显示从 _START_ 至 _END_ ，总计 _TOTAL_ 项数据",
             "sInfoEmpty":      "显示从 0 至 0 总计 0 项数据",
-            "sInfoFiltered":   "(filtered from _MAX_ total entries)",
+            "sInfoFiltered":   "(从 _MAX_ 项数据中过滤)",
             "sInfoPostFix":    "",
             "sInfoThousands":  ",",
             "sLengthMenu":     "显示 _MENU_ 项数据",
@@ -35,10 +19,10 @@ angular.module('app.house').controller('CampusManagementController', function ($
             "sSearch":         "搜索：",
             "sZeroRecords":    "没有查询到匹配的数据",
             "oPaginate": {
-                "sFirst":    "First",
-                "sLast":     "Last",
-                "sNext":     "Next",
-                "sPrevious": "Previous"
+                "sFirst":    "首页",
+                "sLast":     "末页",
+                "sNext":     "下一页",
+                "sPrevious": "上一页"
             },
             "oAria": {
                 "sSortAscending":  ": activate to sort column ascending",
