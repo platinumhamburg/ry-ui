@@ -1,11 +1,28 @@
 'use strict';
 
-angular.module('app.house').controller('CampusManagementController', function ($scope, $http, $q, DTOptionsBuilder, DTColumnBuilder) {
-    
+angular.module('app.house').controller('CampusManagementController', function ($compile, $scope, $http, $q, DTOptionsBuilder, DTColumnBuilder) {
+    var vm = this;
+    vm.selected = {};
+    vm.selectAll = false;
+    vm.toggleAll = toggleAll;
+    vm.toggleOne = toggleOne;
+
+    var titleHtml = '<input type="checkbox" ng-model="$scope.selectAll" ng-click="$scope.toggleAll($scope.selectAll, $scope.selected)">';
 
     //表格相关
     $scope.standardOptions = DTOptionsBuilder
         .fromSource('/api/houses/campusList2.json')
+        .withOption('createdRow', function(row, data, dataIndex) {
+            // Recompiling so we can bind Angular directive to the DT
+            $compile(angular.element(row).contents())($scope);
+        })
+        .withOption('headerCallback', function(header) {
+            if (!vm.headerCompiled) {
+                // Use this headerCompiled field to only compile header once
+                vm.headerCompiled = true;
+                $compile(angular.element(header).contents())($scope);
+            }
+        })
         .withLanguage({
             "sEmptyTable":     "没有查询到数据",
             "sInfo":           "显示从 _START_ 至 _END_ ，总计 _TOTAL_ 项数据",
@@ -87,25 +104,38 @@ angular.module('app.house').controller('CampusManagementController', function ($
                     alert('你点击了该按钮！');
                 }
             }
-        ])
-        // .withColVis()
-        // Add Table tools compatibility
-        // .withTableTools('vendor/datatables-tabletools/swf/copy_csv_xls_pdf.swf')
-        // .withTableToolsButtons([
-        //         'copy',
-        //         'print', {
-        //         'sExtends': 'collection',
-        //         'sButtonText': 'Save',
-        //         'aButtons': ['csv', 'xls', 'pdf']
-        //     }
-        // ])
-        ;
+        ]);
+
     $scope.standardColumns = [
-        DTColumnBuilder.newColumn('campusId').withClass('text-danger'),
-        DTColumnBuilder.newColumn('name'),
-        DTColumnBuilder.newColumn('address'),
-        DTColumnBuilder.newColumn('acquisitionWay'),
-        DTColumnBuilder.newColumn('totalArea')
+        DTColumnBuilder.newColumn(null).withTitle(titleHtml).notSortable()
+            .renderWith(function(data, type, full, meta) {
+                vm.selected[full.id] = false;
+                return '<input type="checkbox" ng-model="$scope.selected[' + data.id + ']" ng-click="$scope.toggleOne($scope.selected)">';
+            }),
+        DTColumnBuilder.newColumn('id').withTitle('校区编号').withClass('text-danger'),
+        DTColumnBuilder.newColumn('name').withTitle('校区名称'),
+        DTColumnBuilder.newColumn('address').withTitle('地址'),
+        DTColumnBuilder.newColumn('acquisitionWay').withTitle('取得方式'),
+        DTColumnBuilder.newColumn('totalArea').withTitle('总面积')
     ];
 
+
+    function toggleAll (selectAll, selectedItems) {
+        for (var id in selectedItems) {
+            if (selectedItems.hasOwnProperty(id)) {
+                selectedItems[id] = selectAll;
+            }
+        }
+    }
+    function toggleOne (selectedItems) {
+        for (var id in selectedItems) {
+            if (selectedItems.hasOwnProperty(id)) {
+                if(!selectedItems[id]) {
+                    vm.selectAll = false;
+                    return;
+                }
+            }
+        }
+        vm.selectAll = true;
+    }
 });

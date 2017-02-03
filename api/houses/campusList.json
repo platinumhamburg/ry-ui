@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "campusId":"001",
+      "id":"001",
       "name":"一区",
       "address":"湖北省武汉市珞珈山X号",
       "lo":"314.2354",
@@ -11,7 +11,7 @@
       "status":"<span class=\"center-block padding-5 label label-success\">有效</span>"
     },
     {
-      "campusId":"002",
+      "id":"002",
       "name":"二区",
       "address":"湖北省武汉市珞珈山Y号",
       "lo":"324.2354",
@@ -21,7 +21,7 @@
       "status":"<span class=\"center-block padding-5 label label-success\">有效</span>"
     },
     {
-      "campusId":"003",
+      "id":"003",
       "name":"三区",
       "address":"湖北省武汉市珞珈山Y号",
       "lo":"114.2354",
